@@ -15,6 +15,9 @@ provider "aws" {
 resource "aws_instance" "webserver" {
     ami = "ami-09c5258a58aeabe14" # original class "ami-b2527ad2"
     instance_type = "t2.micro"
+    tags = {
+        Name = "tf-lab-01"
+        }
     key_name = var.key_name
 }
 
