@@ -12,6 +12,7 @@ provider "aws" {
 }
 
 ### resources definition
+### instances
 resource "aws_instance" "webserver" {
     ami = "ami-09c5258a58aeabe14" # original class "ami-b2527ad2"
     instance_type = "t2.micro"
@@ -21,6 +22,10 @@ resource "aws_instance" "webserver" {
     key_name = var.key_name
 }
 
+### elastic IPs
+resource "aws_eip" "ip" {
+  instance = "aws_instance.webserver.id"
+}
 ### output definitions
 output "aws_instance_public_dns" {
     value = "aws_instance.webserver.public_dns"
