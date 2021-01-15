@@ -24,7 +24,8 @@ resource "aws_instance" "webserver" {
 
 ### elastic IPs
 resource "aws_eip" "ip" {
-  instance = "aws_instance.webserver.id"
+  instance = aws_instance.webserver.id
+  vpc = true
 }
 ### output definitions
 output "aws_instance_public_dns" {
