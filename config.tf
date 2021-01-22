@@ -26,8 +26,16 @@ resource "aws_instance" "webserver" {
 resource "aws_eip" "ip" {
   instance = aws_instance.webserver.id
   vpc = true
+    tags = {
+        Name = "tf-lab-01"
+        }
 }
 ### output definitions
 output "aws_instance_public_dns" {
     value = "aws_instance.webserver.public_dns"
+}
+
+### SECOND output definitions
+output "sensitive_aws_instance_public_dns" {
+    value = "${aws_instance.webserver.public_dns}"
 }
