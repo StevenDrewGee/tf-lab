@@ -32,10 +32,11 @@ resource "aws_eip" "ip" {
 }
 ### output definitions
 output "aws_instance_public_dns" {
-    value = "aws_instance.webserver.public_dns"
+    value = "${aws_instance.webserver.public_dns}"
 }
 
 ### SECOND output definitions
 output "sensitive_aws_instance_public_dns" {
+    sensitive = true
     value = "${aws_instance.webserver.public_dns}"
 }
